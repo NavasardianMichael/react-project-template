@@ -2,9 +2,9 @@ import { FC } from 'react'
 import { EditableUser } from 'components/users/editable'
 import styles from './styles.module.css'
 
-type Props = {}
+type TProps = {}
 
-const ProfilePage: FC<Props> = () => {
+const ProfilePage: FC<TProps> = () => {
   return (
     <div className={styles.profilePage}>
       <EditableUser />

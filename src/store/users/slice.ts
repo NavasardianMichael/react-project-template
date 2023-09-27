@@ -1,6 +1,6 @@
 import { Action, AnyAction, PayloadAction, createSlice } from '@reduxjs/toolkit'
 import { getUsersAsync, setUserOptionsAsync } from './thunks'
-import { UsersActionPayloads, UsersSlice } from './types'
+import { TUsersActionPayloads, TUsersSlice } from './types'
 
 interface RejectedAction extends Action {
   error: Error
@@ -10,7 +10,7 @@ function isRejectedAction(action: AnyAction): action is RejectedAction {
   return action.type.endsWith('rejected')
 }
 
-const initialState: UsersSlice = {
+const initialState: TUsersSlice = {
   byId: {},
   allIds: [],
   visitedUserId: '',
@@ -21,16 +21,16 @@ export const usersSlice = createSlice({
   name: 'users',
   initialState,
   reducers: {
-    setUsers: (state, { payload }: PayloadAction<UsersActionPayloads['setUsers']>) => {
+    setUsers: (state, { payload }: PayloadAction<TUsersActionPayloads['setUsers']>) => {
       return {
         ...state,
         ...payload,
       }
     },
-    setVisitedUserId: (state, { payload }: PayloadAction<UsersActionPayloads['setVisitedUserId']>) => {
+    setVisitedUserId: (state, { payload }: PayloadAction<TUsersActionPayloads['setVisitedUserId']>) => {
       state.visitedUserId = payload
     },
-    setUserOptions: (state, { payload }: PayloadAction<UsersActionPayloads['setUserOptions']>) => {
+    setUserOptions: (state, { payload }: PayloadAction<TUsersActionPayloads['setUserOptions']>) => {
       state.byId[payload.id] = {
         ...state.byId[payload.id],
         ...payload,

@@ -2,21 +2,21 @@ import { ChangeEventHandler, FC, FormEventHandler, useEffect, useState } from 'r
 import { selectVisitedUser, selectVisitedUserId } from 'store/users/selectors'
 import { setVisitedUserId } from 'store/users/slice'
 import { getUserAsync, setUserOptionsAsync } from 'store/users/thunks'
-import { User as UserType } from 'store/users/types'
+import { TUser } from 'store/users/types'
 import { useAppDispatch } from 'hooks/useAppDispatch'
 import { useAppSelector } from 'hooks/useAppSelector'
 import { useUserIdFromPath } from 'hooks/useUserIdFromPath'
 import styles from './styles.module.css'
 
-type Props = {}
+type TProps = {}
 
-export const EditableUser: FC<Props> = () => {
+export const EditableUser: FC<TProps> = () => {
   const dispatch = useAppDispatch()
   const userIdFromPath = useUserIdFromPath()
   const visitedUserId = useAppSelector(selectVisitedUserId)
   const user = useAppSelector(selectVisitedUser)
 
-  const [values, setValues] = useState<Omit<UserType, 'id'>>({
+  const [values, setValues] = useState<Omit<TUser, 'id'>>({
     name: user?.name ?? '',
     email: user?.email ?? '',
   })
@@ -46,7 +46,7 @@ export const EditableUser: FC<Props> = () => {
     }
   }, [dispatch])
 
-  const handleChange = (fieldName: keyof Omit<UserType, 'id'>): ChangeEventHandler<HTMLInputElement> => {
+  const handleChange = (fieldName: keyof Omit<TUser, 'id'>): ChangeEventHandler<HTMLInputElement> => {
     return (e) => {
       setValues((prev) => ({
         ...prev,

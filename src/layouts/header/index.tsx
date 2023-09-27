@@ -3,9 +3,9 @@ import { Navbar } from './navbar'
 import { ThemeHandler } from './themeHandler'
 import styles from './styles.module.css'
 
-type Props = {}
+type TProps = {}
 
-export const Header: FC<Props> = () => {
+export const Header: FC<TProps> = () => {
   return (
     <div className={styles.header}>
       <Navbar />

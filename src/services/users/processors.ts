@@ -1,8 +1,8 @@
-import { User, UsersActionPayloads } from 'store/users/types'
-import { GetUsersResponse, SetUserOptionsResponse, UserResponse } from './types'
+import { TUser, TUsersActionPayloads } from 'store/users/types'
+import { TGetUsersResponse, TSetUserOptionsResponse, TUserResponse } from './types'
 
-export const processGetUsers = (response: GetUsersResponse): UsersActionPayloads['setUsers'] => {
-  const initial: UsersActionPayloads['setUsers'] = {
+export const processGetUsers = (response: TGetUsersResponse): TUsersActionPayloads['setUsers'] => {
+  const initial: TUsersActionPayloads['setUsers'] = {
     byId: {},
     allIds: [],
     visitedUserId: '',
@@ -18,12 +18,12 @@ export const processGetUsers = (response: GetUsersResponse): UsersActionPayloads
   return processed
 }
 
-export const processSetUserOptions = (response: SetUserOptionsResponse): UsersActionPayloads['setUserOptions'] => {
+export const processSetUserOptions = (response: TSetUserOptionsResponse): TUsersActionPayloads['setUserOptions'] => {
   return processUserPartially(response)
 }
 
-const processUserPartially = (response: SetUserOptionsResponse): UsersActionPayloads['setUserOptions'] => {
-  const processed: UsersActionPayloads['setUserOptions'] = {
+const processUserPartially = (response: TSetUserOptionsResponse): TUsersActionPayloads['setUserOptions'] => {
+  const processed: TUsersActionPayloads['setUserOptions'] = {
     id: response.id.toString(),
   }
 
@@ -33,7 +33,7 @@ const processUserPartially = (response: SetUserOptionsResponse): UsersActionPayl
   return processed
 }
 
-export const processUser = (response: UserResponse): User => {
+export const processUser = (response: TUserResponse): TUser => {
   const processed = {
     id: response.id.toString(),
     name: response.name,

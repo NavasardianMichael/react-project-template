@@ -2,11 +2,11 @@ import { FC } from 'react'
 import styles from './styles.module.css'
 import { User } from '../user/main'
 
-type Props = {
+type TProps = {
   
 }
 
-export const UsersList: FC<Props> = ({  }) => {
+export const UsersList: FC<TProps> = ({  }) => {
   return (
     <div className={styles.usersList}>
         <User />

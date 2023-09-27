@@ -1,11 +1,11 @@
 import { FC } from 'react'
 import styles from './styles.module.css'
 
-type Props = {
+type TProps = {
   
 }
 
-export const Navbar: FC<Props> = ({  }) => {
+export const Navbar: FC<TProps> = ({  }) => {
   return (
     <div className={styles.Navbar}>
         Navbar

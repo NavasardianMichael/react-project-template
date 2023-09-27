@@ -1,8 +1,8 @@
 import { FC } from 'react'
 import styles from './styles.module.css'
 
-type Props = {}
+type TProps = {}
 
-export const Button: FC<Props> = ({}) => {
+export const Button: FC<TProps> = ({}) => {
   return <button className={styles.button}>Button</button>
 }

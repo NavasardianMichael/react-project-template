@@ -1,11 +1,11 @@
 import { FC } from 'react'
 import styles from './styles.module.css'
 
-type Props = {
+type TProps = {
   
 }
 
-export const Logo: FC<Props> = ({  }) => {
+export const Logo: FC<TProps> = ({  }) => {
   return (
     <div className={styles.logo}>
         Logo

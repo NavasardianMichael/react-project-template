@@ -1,10 +1,10 @@
-import { User } from 'store/users/types'
+import { TUser } from 'store/users/types'
 import { appFetch } from 'helpers/utils/api'
 import { processGetUsers, processSetUserOptions, processUser } from './processors'
-import { GetUserResponse, GetUsersResponse, SetUserOptionsResponse } from './types'
+import { TGetUserResponse, TGetUsersResponse, TSetUserOptionsResponse } from './types'
 
 export const getUsers = async () => {
-  const response = await appFetch<GetUsersResponse>({
+  const response = await appFetch<TGetUsersResponse>({
     url: `${process.env.REACT_APP_URL_BASE}/users`,
   })
   const processed = processGetUsers(response)
@@ -12,8 +12,8 @@ export const getUsers = async () => {
   return processed
 }
 
-export const getUser = async ({ id }: Pick<User, 'id'>) => {
-  const response = await appFetch<GetUserResponse>({
+export const getUser = async ({ id }: Pick<TUser, 'id'>) => {
+  const response = await appFetch<TGetUserResponse>({
     url: `${process.env.REACT_APP_URL_BASE}users/${id}`,
   })
 
@@ -22,8 +22,8 @@ export const getUser = async ({ id }: Pick<User, 'id'>) => {
   return processed
 }
 
-export const putUserOptions = async (options: Pick<User, 'id'> & Partial<User>) => {
-  const response = await appFetch<SetUserOptionsResponse>({
+export const putUserOptions = async (options: Pick<TUser, 'id'> & Partial<TUser>) => {
+  const response = await appFetch<TSetUserOptionsResponse>({
     url: `${process.env.REACT_APP_URL_BASE}/users/${options.id}`,
     params: {
       method: 'PUT',

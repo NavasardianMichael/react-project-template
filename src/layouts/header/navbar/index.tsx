@@ -4,9 +4,9 @@ import { ROUTES } from 'routes/routes'
 import { combineWithNavLinkActiveClassName } from 'helpers/utils/styles'
 import styles from './styles.module.css'
 
-type Props = {}
+type TProps = {}
 
-export const Navbar: FC<Props> = () => {
+export const Navbar: FC<TProps> = () => {
   return (
     <div className={styles.navbar}>
       <NavLink to={ROUTES.home} className={combineWithNavLinkActiveClassName(styles.active, 'link')}>

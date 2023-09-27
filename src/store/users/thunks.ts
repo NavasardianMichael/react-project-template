@@ -1,7 +1,7 @@
 import { getUser, getUsers, putUserOptions } from 'services/users/api'
 import { createAppAsyncThunk } from 'helpers/utils/thunks'
 import { setUserOptions, setUsers } from './slice'
-import { User, UsersActionPayloads } from './types'
+import { TUser, TUsersActionPayloads } from './types'
 
 export const getUsersAsync = createAppAsyncThunk('users/getUsers', async (_, { dispatch, rejectWithValue }) => {
   try {
@@ -17,7 +17,7 @@ export const getUsersAsync = createAppAsyncThunk('users/getUsers', async (_, { d
 
 export const getUserAsync = createAppAsyncThunk(
   'users/getUsers',
-  async (params: Pick<User, 'id'>, { dispatch, rejectWithValue }) => {
+  async (params: Pick<TUser, 'id'>, { dispatch, rejectWithValue }) => {
     try {
       const data = await getUser(params)
       dispatch(setUserOptions(data))
@@ -32,7 +32,7 @@ export const getUserAsync = createAppAsyncThunk(
 
 export const setUserOptionsAsync = createAppAsyncThunk(
   'users/setUserOptions',
-  async (params: UsersActionPayloads['setUserOptions'], { dispatch, rejectWithValue }) => {
+  async (params: TUsersActionPayloads['setUserOptions'], { dispatch, rejectWithValue }) => {
     try {
       const data = await putUserOptions(params)
       dispatch(setUserOptions(data))

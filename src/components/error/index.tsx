@@ -1,7 +1,7 @@
 import { FC } from 'react'
 
-type Props = {}
+type TProps = {}
 
-export const Error: FC<Props> = () => {
+export const Error: FC<TProps> = () => {
   return <h3>An Error Occurred!</h3>
 }

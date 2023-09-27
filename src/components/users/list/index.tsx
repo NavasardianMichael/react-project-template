@@ -7,9 +7,9 @@ import { Loader } from 'components/ui/loader'
 import { ReadOnlyUser } from '../readOnly'
 import styles from './styles.module.css'
 
-type Props = {}
+type TProps = {}
 
-export const UsersList: FC<Props> = () => {
+export const UsersList: FC<TProps> = () => {
   const dispatch = useAppDispatch()
   const { allIds, byId, isPending } = useAppSelector(selectUsers)
 

@@ -1,18 +1,18 @@
-import { NormalizedShape } from 'helpers/types/commons'
+import { TNormalizedShape } from 'helpers/types/commons'
 
-export type UsersSlice = NormalizedShape<User> & {
-  visitedUserId: User['id']
+export type TUsersSlice = TNormalizedShape<TUser> & {
+  visitedUserId: TUser['id']
   isPending: boolean
 }
 
-export type User = {
+export type TUser = {
   id: string
   name: string
   email: string
 }
 
-export type UsersActionPayloads = {
-  setUsers: Omit<UsersSlice, 'isPending'>
-  setVisitedUserId: User['id']
-  setUserOptions: Pick<User, 'id'> & Partial<User>
+export type TUsersActionPayloads = {
+  setUsers: Omit<TUsersSlice, 'isPending'>
+  setVisitedUserId: TUser['id']
+  setUserOptions: Pick<TUser, 'id'> & Partial<TUser>
 }

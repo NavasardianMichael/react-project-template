@@ -1,10 +1,10 @@
-export type GetUsersResponse = UserResponse[]
+export type TGetUsersResponse = TUserResponse[]
 
-export type GetUserResponse = UserResponse
+export type TGetUserResponse = TUserResponse
 
-export type SetUserOptionsResponse = Pick<UserResponse, 'id'> & Partial<UserResponse>
+export type TSetUserOptionsResponse = Pick<TUserResponse, 'id'> & Partial<TUserResponse>
 
-export type UserResponse = {
+export type TUserResponse = {
   id: number
   name: string
   username: string
