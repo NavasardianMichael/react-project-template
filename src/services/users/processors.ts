@@ -1,42 +1,44 @@
-import { User, UsersActionPayloads, UsersSlice } from "store/users/types";
-import { GetUsersResponse, SetUserOptionsResponse, UserResponse } from "./types";
+import { User, UsersActionPayloads } from 'store/users/types'
+import { GetUsersResponse, SetUserOptionsResponse, UserResponse } from './types'
 
 export const processGetUsers = (response: GetUsersResponse): UsersActionPayloads['setUsers'] => {
-    const processed = response.reduce(
-        (acc: UsersSlice, user) => {
-            acc.byId[user.id] = processUser(user)
-            return acc
-        },
-        {
-            byId: {},
-            allIds: []
-        }
-    )
+  const initial: UsersActionPayloads['setUsers'] = {
+    byId: {},
+    allIds: [],
+    visitedUserId: '',
+  }
 
-    return processed
+  const processed = response.reduce((acc, user) => {
+    const processedUser = processUser(user)
+    acc.byId[user.id] = processedUser
+    acc.allIds.push(processedUser.id)
+    return acc
+  }, initial)
+
+  return processed
 }
 
 export const processSetUserOptions = (response: SetUserOptionsResponse): UsersActionPayloads['setUserOptions'] => {
-    return processUserPartially(response)
+  return processUserPartially(response)
 }
 
 const processUserPartially = (response: SetUserOptionsResponse): UsersActionPayloads['setUserOptions'] => {
-    const processed: UsersActionPayloads['setUserOptions'] = {
-        id: response.id.toString()
-    }
+  const processed: UsersActionPayloads['setUserOptions'] = {
+    id: response.id.toString(),
+  }
 
-    if(response.name) processed.name = response.name
-    if(response.email) processed.email = response.email
+  if (response.name) processed.name = response.name
+  if (response.email) processed.email = response.email
 
-    return processed
+  return processed
 }
 
-const processUser = (response: UserResponse): User => {
-    const processed = {
-        id: response.id.toString(),
-        name: response.name,
-        email: response.email
-    }
+export const processUser = (response: UserResponse): User => {
+  const processed = {
+    id: response.id.toString(),
+    name: response.name,
+    email: response.email,
+  }
 
-    return processed
-};
+  return processed
+}

@@ -1,15 +1,18 @@
-import { FC } from 'react'
-import { Header } from 'components/header/main';
-import { UsersList } from 'components/users/list/main';
-import styles from './app.module.css';
+import { FC, useContext } from 'react'
+import { THEME_TYPES } from 'helpers/constants/theme'
+import { ThemeContext } from 'contexts/theme/context'
+import { Router } from 'routes/RouterProvider'
+import { combineClassNames } from 'helpers/utils/styles'
+import './app.css'
 
 export const App: FC = () => {
+  const { theme } = useContext(ThemeContext)
+
   return (
-    <div className={styles.app}>
-      <Header />
-      <UsersList />
+    <div className={combineClassNames('app', THEME_TYPES[theme])}>
+      <Router />
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
